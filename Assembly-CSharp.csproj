@@ -63,15 +63,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Player\camera\scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Player\control\Backward.cs" />
-    <Compile Include="Assets\Player\control\Command.cs" />
-    <Compile Include="Assets\Player\control\Forward.cs" />
-    <Compile Include="Assets\Player\control\Keyboard.cs" />
-    <Compile Include="Assets\Player\control\Left.cs" />
-    <Compile Include="Assets\Player\control\Right.cs" />
-    <Compile Include="Assets\Player\scripts\Player.cs" />
+    <Compile Include="Assets\creatures\Creature.cs" />
+    <Compile Include="Assets\creatures\enemies\scripts\Enemy.cs" />
+    <Compile Include="Assets\creatures\player\camera\scripts\CameraFollow.cs" />
+    <Compile Include="Assets\creatures\player\control\Backward.cs" />
+    <Compile Include="Assets\creatures\player\control\Command.cs" />
+    <Compile Include="Assets\creatures\player\control\Forward.cs" />
+    <Compile Include="Assets\creatures\player\control\Keyboard.cs" />
+    <Compile Include="Assets\creatures\player\control\Left.cs" />
+    <Compile Include="Assets\creatures\player\control\Right.cs" />
+    <Compile Include="Assets\creatures\player\core\Player.cs" />
+    <Compile Include="Assets\creatures\player\weapons\pistol\Pistol\scripts\Pistol.cs" />
+    <Compile Include="Assets\creatures\player\weapons\scripts\Ammo.cs" />
+    <Compile Include="Assets\creatures\player\weapons\scripts\Firearm.cs" />
+    <Compile Include="Assets\creatures\player\weapons\scripts\Grenade.cs" />
+    <Compile Include="Assets\creatures\player\weapons\scripts\Shotgun.cs" />
+    <Compile Include="Assets\creatures\player\weapons\scripts\Weapon.cs" />
+    <Compile Include="Assets\map\scripts\OutOfMap.cs" />
     <Compile Include="Assets\system\MouseManager.cs" />
+    <Compile Include="Assets\system\Spawner.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/projects/unity 19/top down shooter/proj/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

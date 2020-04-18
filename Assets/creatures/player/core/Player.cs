@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Creature
 {
-    public float speed;
+    public Pistol pistol;
 
-    MouseManager mouseManager;
-    private void Start()
-    {
-        mouseManager = GameObject.FindObjectOfType<MouseManager>();
-    }
     void FixedUpdate()
     {
-        if (mouseManager.IsMouseMovement)
+        if (MouseManager.IsMovement)
             Rotate();
     }
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+            pistol.Shoot();
+    }
+    
     void Rotate()
     {
         Plane playerPlane = new Plane(Vector3.up, transform.position);
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour
         {
             Vector3 targetPoint = ray.GetPoint(hitdist);
             transform.LookAt(targetPoint);
-            mouseManager.getPos();
+            MouseManager.getPos();
         }
     }
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MouseManager : MonoBehaviour
 {
-    Vector3 mousePos;
-    public bool IsMouseMovement
+    static Vector3 mousePos;
+    public static bool IsMovement
     {
         get { return mousePos != Input.mousePosition; }
     }
-    public void getPos()
+    public static void getPos()
     {
         mousePos = Input.mousePosition;
     }
