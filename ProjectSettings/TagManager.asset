@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - OutOfMap
   - Projectile
+  - Ground
   layers:
   - Default
   - TransparentFX

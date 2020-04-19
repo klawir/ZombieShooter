@@ -7,9 +7,15 @@ public class Creature : MonoBehaviour
     public float speed;
     public int hp;
 
-    public void getDamage(Firearm gun)
+    public void getDamage(Weapon gun)
     {
         hp -= gun.dmg;
+        if (IsDead)
+            Destroy(gameObject);
+    }
+    public void getDamage(int dmg)
+    {
+        hp -= dmg;
         if (IsDead)
             Destroy(gameObject);
     }

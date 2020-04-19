@@ -6,9 +6,18 @@ public abstract class Weapon : MonoBehaviour
 {
     public Transform shootSource;
     public int dmg;
+    public float shotFraquency;
 
-    public virtual void Shoot()
+    protected float time;
+
+    protected virtual void Start()
     {
-
+        time = 0;
     }
+    protected bool CanShoot
+    {
+        get { return Time.time > time + shotFraquency; }
+    }
+    public abstract void Fire();
+    
 }

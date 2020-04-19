@@ -4,29 +4,22 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour
 {
-    public int speed;
-    public Firearm gun;
+    public Weapon gun;
     public string enemytag;
 
-    Vector3 movementDirection;
+    protected Vector3 movementDirection;
 
-    private void Start()
+    protected virtual void Start()
     {
         movementDirection = gun.transform.forward;
     }
-    private void Update()
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        Movement();
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == enemytag){
+        if (other.tag == enemytag)
+        {
             other.GetComponent<Enemy>().getDamage(gun);
+            Debug.Log(other.GetComponent<Enemy>().hp);
             Destroy(gameObject);
         }
-    }
-    void Movement()
-    {
-        transform.position += movementDirection * speed * Time.deltaTime;
     }
 }

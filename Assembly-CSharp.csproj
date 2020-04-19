@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Hitscanner.cs" />
+    <Compile Include="Assets\WeaponSwitcher.cs" />
     <Compile Include="Assets\creatures\Creature.cs" />
     <Compile Include="Assets\creatures\enemies\scripts\Enemy.cs" />
     <Compile Include="Assets\creatures\player\camera\scripts\CameraFollow.cs" />
@@ -73,13 +75,16 @@
     <Compile Include="Assets\creatures\player\control\Left.cs" />
     <Compile Include="Assets\creatures\player\control\Right.cs" />
     <Compile Include="Assets\creatures\player\core\Player.cs" />
-    <Compile Include="Assets\creatures\player\weapons\pistol\Pistol\scripts\Pistol.cs" />
+    <Compile Include="Assets\creatures\player\weapons\grenade\Explosion.cs" />
+    <Compile Include="Assets\creatures\player\weapons\grenade\Grenade.cs" />
+    <Compile Include="Assets\creatures\player\weapons\grenade\Grenades.cs" />
+    <Compile Include="Assets\creatures\player\weapons\pistol\Pistol.cs" />
+    <Compile Include="Assets\creatures\player\weapons\pistol\Projectile.cs" />
     <Compile Include="Assets\creatures\player\weapons\scripts\Ammo.cs" />
     <Compile Include="Assets\creatures\player\weapons\scripts\Firearm.cs" />
-    <Compile Include="Assets\creatures\player\weapons\scripts\Grenade.cs" />
-    <Compile Include="Assets\creatures\player\weapons\scripts\Shotgun.cs" />
     <Compile Include="Assets\creatures\player\weapons\scripts\Weapon.cs" />
-    <Compile Include="Assets\map\scripts\OutOfMap.cs" />
+    <Compile Include="Assets\creatures\player\weapons\shotgun\Shotgun.cs" />
+    <Compile Include="Assets\map\scripts\Border.cs" />
     <Compile Include="Assets\system\MouseManager.cs" />
     <Compile Include="Assets\system\Spawner.cs" />
     <Reference Include="Unity.Timeline.Editor">

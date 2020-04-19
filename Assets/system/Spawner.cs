@@ -5,12 +5,12 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public Enemy enemy;
-    public Transform spawnPoint;
+    public List<Transform> spawnPoints;
     public float spawnTimeFraquency;
 
     public void Spawn()
     {
-        Instantiate(enemy, spawnPoint.position, enemy.transform.rotation);
+        Instantiate(enemy, spawnPoints[Random.Range(0, spawnPoints.Count)].position, enemy.transform.rotation);
     }
     private void Start()
     {

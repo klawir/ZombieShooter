@@ -6,12 +6,19 @@ public class Firearm : Weapon
 {
     public Ammo ammo;
 
-    public override void Shoot()
+    public override void Fire()
     {
-        base.Shoot();
+        if (CanShoot)
+        {
+            SpawnProjectile();
+            time = Time.time;
+        }
+    }
+    void SpawnProjectile()
+    {
         Instantiate(ammo, shootSource.position, Quaternion.Euler(
-            shootSource.transform.rotation.x, 
-            shootSource.transform.rotation.y, 
-            shootSource.transform.rotation.z)).gun=this;
+            shootSource.transform.eulerAngles.x,
+            shootSource.transform.eulerAngles.y + 180f,
+            shootSource.transform.eulerAngles.z)).gun = this;
     }
 }
