@@ -5,7 +5,7 @@ using UnityEngine;
 public class Grenades : Weapon
 {
     public Grenade grenade;
-    public int value;
+    public int amount;
     public float thrownSpeed;
 
     protected override void Start()
@@ -15,7 +15,7 @@ public class Grenades : Weapon
     }
     public override void Fire()
     {
-        if (value > 0)
+        if (amount > 0)
         {
             if (CanShoot)
             {
@@ -33,7 +33,8 @@ public class Grenades : Weapon
             shootSource.transform.eulerAngles.z));
 
         Calculate(_grenade);
-        value--;
+        amount--;
+        GameObject.FindObjectOfType<UI>().SetGranades(this);
     }
     void Calculate(Grenade grenade)
     {

@@ -5,10 +5,6 @@ using UnityEngine.AI;
 
 public class Enemy : Creature
 {
-    Transform player;
-    Vector3 playerLastPos;
-    bool playerInRange;
-
     public NavMeshAgent agent;
     public NavMeshObstacle avoidance;
     public string playerTag;
@@ -17,19 +13,20 @@ public class Enemy : Creature
     public float modelSpeedNav;
 
     float time;
-    
+    Target target;
+
     void Start()
     {
-        player = GameObject.FindObjectOfType<Player>().transform;
+        target.transform = GameObject.FindObjectOfType<Player>().transform;
         time = 0;
         CalculateMovement();
     }
 
     void Update()
     {
-        if (!playerInRange)
+        if (!target.IsInRange)
         {
-            if (IsPlayerMoving)
+            if (target.IsMoving)
                 CalculateMovement();
             MovementAndRotation();
         }
@@ -38,7 +35,8 @@ public class Enemy : Creature
     {
         if (other.tag == playerTag)
         {
-            playerInRange = true;
+            time = Time.time;
+            target.InRange();
             if (agent.enabled)
             {
                 avoidance.enabled = true;
@@ -50,7 +48,7 @@ public class Enemy : Creature
     {
         if (other.tag == playerTag)
         {
-            if (Time.time > time + speedAttack)
+            if (CanAttack)
             {
                 Attack(other);
                 time = Time.time;
@@ -61,32 +59,43 @@ public class Enemy : Creature
     {
         if (other.tag == playerTag)
         {
-            playerInRange = false;
+            target.OutOfRange();
             StartCoroutine("EnableAgent");
         }
     }
+    private void OnDestroy()
+    {
+        Player _player = target.transform.GetComponentInParent<Player>();
+        _player.AddPoints();
+        GameObject.FindObjectOfType<UI>().SetKills(_player);
+    }
+    bool CanAttack
+    {
+        get { return Time.time > time + speedAttack; }
+    }
+
     private IEnumerator EnableAgent()
     {
         avoidance.enabled = false;
         yield return new WaitForSeconds(Time.deltaTime);
         agent.enabled = true;
     }
+    
     void CalculateMovement()
     {
-        agent.destination = player.position;
-        playerLastPos = player.position;
+        agent.destination = target.transform.position;
+        target.InitLastPos();
     }
     void MovementAndRotation()
     {
         transform.position = Vector3.Lerp(transform.position, agent.transform.position, Time.deltaTime * modelSpeedNav);
         transform.rotation = agent.transform.rotation;
     }
-    bool IsPlayerMoving
-    {
-        get { return playerLastPos != player.position; }
-    }
+    
     public void Attack(Collider other)
     {
-        other.GetComponent<Player>().getDamage(damage);
+        Player player = other.GetComponent<Player>();
+        player.getDamage(damage);
+        GameObject.FindObjectOfType<UI>().SetHP(player);
     }
 }

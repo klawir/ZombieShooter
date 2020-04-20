@@ -2,7 +2,14 @@
 
 public class Player : Creature
 {
-    
+    int points;
+
+    private void Start()
+    {
+        UI gui = GameObject.FindObjectOfType<UI>();
+        WeaponSwitcher weaponSwitcher= GameObject.FindObjectOfType<WeaponSwitcher>();
+        gui.FirstInit(this);
+    }
     void FixedUpdate()
     {
         if (MouseManager.IsMovement)
@@ -21,5 +28,13 @@ public class Player : Creature
             transform.LookAt(targetPoint);
             MouseManager.getPos();
         }
+    }
+    public int Points
+    {
+        get { return points; }
+    }
+    public void AddPoints()
+    {
+        points++;
     }
 }
