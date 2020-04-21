@@ -11,7 +11,7 @@ public class WeaponSwitcher : MonoBehaviour
     public Transform gunSlot;
 
     public Player player;
-    public UI gui;
+    public UI ui;
 
     private void Start()
     {
@@ -23,13 +23,13 @@ public class WeaponSwitcher : MonoBehaviour
         {
             DeleteOther();
             Switch(pistol);
-            gui.SwitchToPistol();
+            ui.SwitchToPistol();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             DeleteOther();
             Switch(shotgun);
-            gui.SwitchToShotgun();
+            ui.SwitchToShotgun();
         }
         if (Input.GetMouseButton(0))
             currentGun.Fire();

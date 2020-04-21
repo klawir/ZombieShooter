@@ -63,17 +63,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EnemyUI.cs" />
+    <Compile Include="Assets\TextEffect.cs" />
     <Compile Include="Assets\creatures\core\Creature.cs" />
+    <Compile Include="Assets\creatures\core\core\Player.cs" />
     <Compile Include="Assets\creatures\enemies\scripts\Target.cs" />
     <Compile Include="Assets\creatures\enemies\scripts\core\Enemy.cs" />
     <Compile Include="Assets\creatures\player\camera\scripts\CameraFollow.cs" />
-    <Compile Include="Assets\creatures\player\control\Backward.cs" />
-    <Compile Include="Assets\creatures\player\control\Command.cs" />
-    <Compile Include="Assets\creatures\player\control\Forward.cs" />
-    <Compile Include="Assets\creatures\player\control\Keyboard.cs" />
-    <Compile Include="Assets\creatures\player\control\Left.cs" />
-    <Compile Include="Assets\creatures\player\control\Right.cs" />
-    <Compile Include="Assets\creatures\player\core\Player.cs" />
+    <Compile Include="Assets\creatures\player\control\scripts\Backward.cs" />
+    <Compile Include="Assets\creatures\player\control\scripts\Command.cs" />
+    <Compile Include="Assets\creatures\player\control\scripts\Forward.cs" />
+    <Compile Include="Assets\creatures\player\control\scripts\Keyboard.cs" />
+    <Compile Include="Assets\creatures\player\control\scripts\Left.cs" />
+    <Compile Include="Assets\creatures\player\control\scripts\Right.cs" />
     <Compile Include="Assets\creatures\player\gui\scripts\UI.cs" />
     <Compile Include="Assets\creatures\player\weapons\core\Ammo.cs" />
     <Compile Include="Assets\creatures\player\weapons\core\Firearm.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Assets\creatures\player\weapons\pistol\scripts\Projectile.cs" />
     <Compile Include="Assets\creatures\player\weapons\shotgun\scripts\Hitscanner.cs" />
     <Compile Include="Assets\creatures\player\weapons\shotgun\scripts\Shotgun.cs" />
+    <Compile Include="Assets\items\Item.cs" />
     <Compile Include="Assets\map\scripts\Border.cs" />
     <Compile Include="Assets\system\MouseManager.cs" />
     <Compile Include="Assets\system\Spawner.cs" />

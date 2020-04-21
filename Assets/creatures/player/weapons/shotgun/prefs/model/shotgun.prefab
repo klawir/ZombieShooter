@@ -138,6 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootSource: {fileID: 4620914126672940512}
-  dmg: 4
-  shotFraquency: 1.5
+  dmg: 3
+  shotFraquency: 2
   ammo: {fileID: 7207992954865262631, guid: 15e120dc2d667a948a5d57dae941b61f, type: 3}

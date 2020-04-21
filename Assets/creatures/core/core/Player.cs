@@ -3,19 +3,25 @@
 public class Player : Creature
 {
     int points;
+    public UI ui;
 
     private void Start()
     {
-        UI gui = GameObject.FindObjectOfType<UI>();
         WeaponSwitcher weaponSwitcher= GameObject.FindObjectOfType<WeaponSwitcher>();
-        gui.FirstInit(this);
+        ui.FirstInit(this);
     }
     void FixedUpdate()
     {
         if (MouseManager.IsMovement)
             Rotate();
     }
-    
+    public override void getDamage(int dmg)
+    {
+        base.getDamage(dmg);
+        if (IsDead)
+            Destroy(gameObject);
+        ui.SetHP(this);
+    }
     void Rotate()
     {
         Plane playerPlane = new Plane(Vector3.up, transform.position);

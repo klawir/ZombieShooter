@@ -11,14 +11,16 @@ public class Enemy : Creature
     public int damage;
     public float speedAttack;
     public float modelSpeedNav;
+    public EnemyUI ui;
 
-    float time;
+    float attackCoolDown;
     Target target;
 
     void Start()
     {
-        target.transform = GameObject.FindObjectOfType<Player>().transform;
-        time = 0;
+        Player player= GameObject.FindObjectOfType<Player>();
+        target.Init(player);
+        attackCoolDown = 0;
         CalculateMovement();
     }
 
@@ -35,13 +37,10 @@ public class Enemy : Creature
     {
         if (other.tag == playerTag)
         {
-            time = Time.time;
+            AttackCoolDown();
             target.InRange();
-            if (agent.enabled)
-            {
-                avoidance.enabled = true;
-                agent.enabled = false;
-            }
+            agent.enabled = false;
+            avoidance.enabled = true;
         }
     }
     private void OnTriggerStay(Collider other)
@@ -50,8 +49,8 @@ public class Enemy : Creature
         {
             if (CanAttack)
             {
-                Attack(other);
-                time = Time.time;
+                Attack(target);
+                AttackCoolDown();
             }
         }
     }
@@ -65,15 +64,24 @@ public class Enemy : Creature
     }
     private void OnDestroy()
     {
-        Player _player = target.transform.GetComponentInParent<Player>();
-        _player.AddPoints();
-        GameObject.FindObjectOfType<UI>().SetKills(_player);
+        target.player.AddPoints();
+        GameObject.FindObjectOfType<UI>().SetKills(target.player);
+    }
+    public override void getDamage(int dmg)
+    {
+        base.getDamage(dmg);
+        ui.RenderDamage(dmg);
+        if (IsDead)
+            Destroy(gameObject);
     }
     bool CanAttack
     {
-        get { return Time.time > time + speedAttack; }
+        get { return Time.time > attackCoolDown + speedAttack; }
     }
-
+    void AttackCoolDown()
+    {
+        attackCoolDown = Time.time;
+    }
     private IEnumerator EnableAgent()
     {
         avoidance.enabled = false;
@@ -92,10 +100,8 @@ public class Enemy : Creature
         transform.rotation = agent.transform.rotation;
     }
     
-    public void Attack(Collider other)
+    public void Attack(Target target)
     {
-        Player player = other.GetComponent<Player>();
-        player.getDamage(damage);
-        GameObject.FindObjectOfType<UI>().SetHP(player);
+        target.player.getDamage(damage);
     }
 }
