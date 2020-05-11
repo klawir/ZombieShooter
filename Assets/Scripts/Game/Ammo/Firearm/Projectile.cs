@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : Ammo
 {
+    #region OVERRIDES METHODS
     protected override void Start()
     {
         base.Start();
@@ -14,4 +15,5 @@ public class Projectile : Ammo
         base.OnTriggerEnter(other);
         Destroy(gameObject);
     }
+    #endregion
 }

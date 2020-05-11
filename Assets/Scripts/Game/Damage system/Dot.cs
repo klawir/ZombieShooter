@@ -7,15 +7,23 @@ using UnityEngine;
 /// </summary>
 public class Dot : MonoBehaviour
 {
-    public int damage;
-    public float frequencyInSecs;
+    #region REFERENCES  
+    [SerializeField]
+    private int damage;
 
+    [SerializeField]
+    private float frequencyInSecs;
+    #endregion]
+
+    #region OVERRIDES METHODS
     private void Start() 
     {
         Enemy enemy = GetComponentInParent<Enemy>();
         StartCoroutine(DealDamage(enemy));
     }
+    #endregion
 
+    #region IENUMERATORS
     private IEnumerator DealDamage(Enemy enemy)
     {
         while(!enemy.IsDead) {
@@ -23,4 +31,5 @@ public class Dot : MonoBehaviour
             yield return new WaitForSeconds(frequencyInSecs);
         }
     }
+    #endregion
 }

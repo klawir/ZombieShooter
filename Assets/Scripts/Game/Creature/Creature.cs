@@ -6,26 +6,37 @@
 /// </summary>
 public class Creature : MonoBehaviour
 {
-    public float speed;
-    public int maxHP;
+    #region REFERENCES 
+    [SerializeField]
+    protected float speed;
+
+    [SerializeField]
+    private int maxHP;
     
     [SerializeField]
     protected int currentHp;
+    #endregion]
 
+    #region OVERRIDES METHODS
     protected virtual void Start() => FirstInitialize();
 
     public virtual void getDamage(int value)
     {
         currentHp -= value;
     }
+    #endregion
 
-    public bool IsDead
-    {
-        get { return currentHp <= 0; }
-    }
-
+    #region METHODS
     private void FirstInitialize()
     {
         currentHp = maxHP;
     }
+    #endregion
+
+    #region PROPERTIES
+    public bool IsDead
+    {
+        get { return currentHp <= 0; }
+    }
+    #endregion]
 }

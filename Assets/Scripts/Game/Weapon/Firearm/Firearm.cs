@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class Firearm : Weapon
 {
+    #region REFERENCES  
+    [SerializeField]
     public Ammo ammo;
-    public AudioSource audioSFX;
-    public GameObject shootEffect;
 
+    [SerializeField]
+    public AudioSource audioSFX;
+
+    [SerializeField]
+    public GameObject shootEffect;
+    #endregion
+
+    #region OVERRIDES METHODS
     protected override void Start()
     {
         base.Start();
@@ -21,14 +29,16 @@ public class Firearm : Weapon
             audioSFX.Play();
         }
     }
+    #endregion
 
+    #region METHODS
     protected void SpawnProjectile(Transform shootSource)
     {
         Ammo spawnedAmmo = Instantiate(ammo, shootSource.position, Quaternion.Euler(
             shootSource.eulerAngles.x,
             shootSource.eulerAngles.y,
             shootSource.eulerAngles.z)) as Ammo;
-        spawnedAmmo.gun = this;
+        spawnedAmmo.SetGun(this);
     }
 
     private void SpawnShootEffect()
@@ -39,4 +49,5 @@ public class Firearm : Weapon
             shootSource.eulerAngles.z));
         effect.transform.SetParent(transform);
     }
+    #endregion
 }

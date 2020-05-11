@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-    public string surfaceTag;
-    public Explosion explosion;
+    #region REFERENCES  
+    [SerializeField]
+    private string surfaceTag;
 
+    [SerializeField]
+    private Explosion explosion;
+    #endregion
+
+    #region OVERRIDES METHODS
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == surfaceTag) {
@@ -18,4 +24,5 @@ public class Grenade : MonoBehaviour
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
     }
+    #endregion
 }

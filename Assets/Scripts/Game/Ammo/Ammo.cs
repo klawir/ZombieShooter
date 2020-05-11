@@ -7,13 +7,27 @@ using UnityEngine;
 /// </summary>
 public class Ammo : MonoBehaviour
 {
-    public Weapon gun;
-    public string enemyTag;
-    public string groundTag;
-    public GameObject implactEffect;
-    public int speed;
-    protected Vector3 movementDirection;
+    #region REFERENCES  
+    [SerializeField]
+    protected Weapon gun;
 
+    [SerializeField]
+    protected string enemyTag;
+
+    [SerializeField]
+    protected string groundTag;
+
+    [SerializeField]
+    protected GameObject implactEffect;
+
+    [SerializeField]
+    protected int speed;
+
+    [SerializeField]
+    protected Vector3 movementDirection;
+    #endregion
+
+    #region OVERRIDES METHODS
     protected virtual void Start() {
         InitMovementDirection();
         GetComponent<Rigidbody>().velocity = movementDirection * speed;
@@ -22,11 +36,13 @@ public class Ammo : MonoBehaviour
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.tag == enemyTag) {
-            other.GetComponent<Enemy>().getDamage(gun.damage);
+            other.GetComponent<Enemy>().getDamage(gun.Damage);
             SpawnImpactEffect(other);
         }
     }
+    #endregion
 
+    #region METHODS
     private void SpawnImpactEffect(Collider target)
     {
         Instantiate(implactEffect, target.transform.position, Quaternion.Euler(
@@ -39,4 +55,10 @@ public class Ammo : MonoBehaviour
     {
         movementDirection = gun.transform.forward;
     }
+
+    public void SetGun(Weapon weapon)
+    {
+        gun = weapon;
+    }
+    #endregion
 }

@@ -5,48 +5,90 @@ using UnityEngine.UI;
 
 public class Combat : MonoBehaviour
 {
-    public Animation animation;
-    public AnimationClip attack;
+    #region REFERENCES  
+    [SerializeField]
+    private EnemyAnimation animations;
 
-    //attack animation hit moment in percent
-    public float hitMomentAnim;
+    [SerializeField]
+    private Navigation navigation;
+
+    [SerializeField]
+    private string playerTag;
+
+    [SerializeField]
+    private int damage;
+
+    [SerializeField]
+    private float speedAttack = 1;
 
     //blocks next deal damage after first call DealDamage(Target target, int damage);
     private bool dealtDamage;
 
-    private float hitMomment;
-    private float onePercentOfAttackAnim;
+    private float time;
 
-    private void Start()
+    #endregion
+
+    #region OVERRIDES METHODS
+    private void OnTriggerEnter(Collider other)
     {
-        onePercentOfAttackAnim = (animation[attack.name].length / 100);
-        hitMomment = onePercentOfAttackAnim * hitMomentAnim;
+        if (other.tag == playerTag) {
+            PrepareToAttack();
+        }
     }
 
-    private bool IsHitMomment
+    private void OnTriggerStay(Collider other)
     {
-        get { return animation[attack.name].time > hitMomment; }
+        if (other.tag == playerTag) {
+            if (ChargeTimeOfAttack) { 
+                Attack(navigation.TargetPlayer, damage);
+            }
+        }
     }
 
-    private bool IsBeginningOfAnim
+    private void OnTriggerExit(Collider other)
     {
-        get { return animation[attack.name].time < onePercentOfAttackAnim; }
+        if (other.tag == playerTag) {
+            navigation.Enable();
+        }
+    }
+    #endregion
+
+    #region METHODS
+    public void Attack(Player player, int damage)
+    {
+        animations.PlayAttack();
+        if (animations.IsHitMomment && !dealtDamage)
+        {
+            DealDamage(player, damage);
+        }
+        if (animations.IsBeginningOfAttackAnim)
+        {
+            dealtDamage = false;
+            time = Time.time;
+        }
     }
 
-    private void DealDamage(Target target, int damage)
+    /// <summary>
+    /// Disables navigation, marks enemy's position as obstacle
+    /// </summary>
+    private void PrepareToAttack()
     {
-        target.Player.getDamage(damage);
+        navigation.Disable();
+    }
+
+    private void DealDamage(Player player, int damage)
+    {
+        player.getDamage(damage);
         dealtDamage = true;
     }
+    #endregion
 
-    public void Attack(Target target, int damage)
-    {
-        animation.Play(attack.name);
-        if (IsHitMomment && !dealtDamage) {
-            DealDamage(target, damage);
-        }
-        if (IsBeginningOfAnim) { 
-            dealtDamage = false;
-        }
+    #region PROPERTIES
+
+    private bool ChargeTimeOfAttack
+    { 
+        get { return Time.time > time + speedAttack; }
     }
+
+    #endregion
 }

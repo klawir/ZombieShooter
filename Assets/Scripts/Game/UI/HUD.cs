@@ -6,14 +6,28 @@ using UnityEngine.UI;
 /// </summary>
 public class HUD : Singleton<HUD>
 {
-    public Text kills;
-    public Text HP;
-    public Canvas canvas;
-    public Image RiffleGun;
-    public Image Shotgun;
-    public Text grenades;
+    #region REFERENCES  
+    [SerializeField]
+    private Text kills;
 
-    void Awake()
+    [SerializeField]
+    private Text HP;
+
+    [SerializeField]
+    private Canvas canvas;
+
+    [SerializeField]
+    private Image RiffleGun;
+
+    [SerializeField]
+    private Image Shotgun;
+
+    [SerializeField]
+    private Text grenades;
+    #endregion
+
+    #region OVERRIDES METHODS
+    private void Awake()
     {
         if (instance == null) {
             instance = this;
@@ -21,7 +35,10 @@ public class HUD : Singleton<HUD>
     }
 
     private void Start() => FirstInit();
-    
+    #endregion
+
+    #region METHODS
+
     /// <summary>
     /// Updates player's score
     /// </summary>
@@ -33,7 +50,7 @@ public class HUD : Singleton<HUD>
 
     public void UpdateGranades(Grenades grenades)
     {
-        this.grenades.text = grenades.amount.ToString();
+        this.grenades.text = grenades.Amount.ToString();
     }
 
     public void SelectRiffleGun()
@@ -56,6 +73,7 @@ public class HUD : Singleton<HUD>
     {
         Player player = GameObject.FindObjectOfType<Player>();
         kills.text = player.Points.ToString();
-        grenades.text = player.GetComponentInChildren<Grenades>().amount.ToString();
+        grenades.text = player.GetComponentInChildren<Grenades>().Amount.ToString();
     }
+    #endregion
 }

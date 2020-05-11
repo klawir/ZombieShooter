@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class PlayerAnimations : AnimationManager
 {
     #region REFERENCES  
-    protected static T instance;
+    [SerializeField]
+    private AnimationClip idle;
     #endregion
 
     #region METHODS
-    public static T Instance
+    public void PlayIdle()
     {
-        get { return instance; }
+        animation.Play(idle.name);
     }
     #endregion
 }

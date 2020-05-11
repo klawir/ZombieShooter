@@ -5,15 +5,30 @@ using UnityEngine.UI;
 
 public class WeaponSwitcher : MonoBehaviour
 {
-    public Firearm rifleGun;
-    public Firearm shotgun;
+    #region REFERENCES  
+    [SerializeField]
+    private Firearm rifleGun;
 
-    public KeyBindings keyBindings;
-    public Firearm currentGun;
-    public Grenades grenades;
-    public Transform gunSlot;
-    public Player player;
+    [SerializeField]
+    private Firearm shotgun;
 
+    [SerializeField]
+    private KeyBindings keyBindings;
+
+    [SerializeField]
+    private Firearm currentGun;
+
+    [SerializeField]
+    private Grenades grenades;
+
+    [SerializeField]
+    private Transform gunSlot;
+
+    [SerializeField]
+    private Player player;
+    #endregion
+
+    #region OVERRIDES METHODS
     private void Start()
     {
         if(!IsGunExist) {
@@ -40,7 +55,9 @@ public class WeaponSwitcher : MonoBehaviour
             grenades.Fire();
         }
     }
+    #endregion
 
+    #region METHODS
     private bool IsGunExist
     {
         get { return gunSlot.childCount > 0; }
@@ -69,4 +86,5 @@ public class WeaponSwitcher : MonoBehaviour
     {
         Switch(rifleGun);
     }
+    #endregion
 }

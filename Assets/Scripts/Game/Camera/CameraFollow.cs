@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    #region REFERENCES  
     [SerializeField]
     private Transform target;
     [SerializeField]
     private Vector3 targetLastPos;
+    #endregion
 
+    #region OVERRIDES METHODS
     private void Update()
     {
         if (IsTargetMoved) {
             Follow();
         }
     }
+    #endregion
 
+    #region METHODS
     private void Follow()
     {
         targetLastPos = target.position;
@@ -28,4 +33,5 @@ public class CameraFollow : MonoBehaviour
     {
         get { return targetLastPos != target.position; }
     }
+    #endregion
 }

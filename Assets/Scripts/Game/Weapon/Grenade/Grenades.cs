@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class Grenades : Weapon
 {
-    public Grenade grenade;
-    public int amount;
-    public float thrownSpeed;
+    #region REFERENCES  
+    [SerializeField]
+    private Grenade grenade;
 
+    [SerializeField]
+    private int amount;
+
+    [SerializeField]
+    private float thrownSpeed;
+    #endregion
+
+    #region OVERRIDES METHODS
     protected override void Start()
     {
         base.Start();
@@ -23,7 +31,9 @@ public class Grenades : Weapon
             }
         }
     }
+    #endregion
 
+    #region METHODS
     private void Throw()
     {
         Grenade spawnedGrenade = Instantiate(grenade, shootSource.position, Quaternion.Euler(
@@ -40,4 +50,9 @@ public class Grenades : Weapon
     {
         spawnedGrenade.GetComponent<Rigidbody>().velocity = transform.forward * transform.forward.magnitude * thrownSpeed;
     }
+    #endregion
+
+    #region PROPRETIES
+    public int Amount => amount;
+    #endregion
 }

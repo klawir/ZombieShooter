@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class DestroyWithDelay : MonoBehaviour
 {
-    public float delaynInSecs;
+    #region REFERENCES 
+    [SerializeReference]
+    private float delaynInSecs;
+    #endregion
 
+    #region OVERRIDES METHODS
     private void Start()
     {
         Destroy(gameObject, delaynInSecs);
     }
+    #endregion
 }

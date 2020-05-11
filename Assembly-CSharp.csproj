@@ -65,11 +65,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Game\Agents\Combat.cs" />
     <Compile Include="Assets\Scripts\Game\Agents\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Game\Agents\EnemyAnimation.cs" />
+    <Compile Include="Assets\Scripts\Game\Agents\Navigation.cs" />
     <Compile Include="Assets\Scripts\Game\Agents\Target.cs" />
     <Compile Include="Assets\Scripts\Game\Ammo\Ammo.cs" />
     <Compile Include="Assets\Scripts\Game\Ammo\Firearm\Projectile.cs" />
     <Compile Include="Assets\Scripts\Game\Ammo\Shotgun\PenetratingProjectile.cs" />
     <Compile Include="Assets\Scripts\Game\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Game\Core\AnimationManager.cs" />
     <Compile Include="Assets\Scripts\Game\Core\DestroyWithDelay.cs" />
     <Compile Include="Assets\Scripts\Game\Core\KeyBindings.cs" />
     <Compile Include="Assets\Scripts\Game\Core\MouseManager.cs" />
@@ -79,6 +82,7 @@
     <Compile Include="Assets\Scripts\Game\Damage system\Dot.cs" />
     <Compile Include="Assets\Scripts\Game\Effects\Explosion.cs" />
     <Compile Include="Assets\Scripts\Game\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\PlayerAnimations.cs" />
     <Compile Include="Assets\Scripts\Game\Player\WeaponSwitcher.cs" />
     <Compile Include="Assets\Scripts\Game\UI\HUD.cs" />
     <Compile Include="Assets\Scripts\Game\Weapon\Firearm\Firearm.cs" />

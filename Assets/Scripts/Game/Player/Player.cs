@@ -5,15 +5,21 @@ using UnityEngine.UI;
 
 public class Player : Creature
 {
+    #region REFERENCES  
     [SerializeField]
     private int points;
 
-    public KeyBindings keyBindings;
-    public Animation animation;
-    public AnimationClip move;
-    public AnimationClip idle;
-    public Text HP;
+    [SerializeField]
+    private KeyBindings keyBindings;
 
+    [SerializeField]
+    private PlayerAnimations playerAnimations;
+
+    [SerializeField]
+    private Text HP;
+    #endregion
+
+    #region OVERRIDES METHODS
     protected override void Start()
     {
         base.Start();
@@ -27,7 +33,7 @@ public class Player : Creature
         }
         if (!Input.anyKey) {
             Inertia();
-            animation.Play(idle.name);
+            playerAnimations.PlayIdle();
         }
     }
     private void Update()
@@ -39,18 +45,28 @@ public class Player : Creature
             Move();
         }
     }
-    private void Inertia()
-    {
-        transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Time.deltaTime;
-    }
 
     public override void getDamage(int value)
     {
         base.getDamage(value);
-        if (IsDead) {
+        if (IsDead)
+        {
             Destroy(gameObject);
         }
         UpgradeGUIHP();
+    }
+    #endregion
+
+    #region METHODS
+
+    public void AddPoints()
+    {
+        points++;
+    }
+
+    private void Inertia()
+    {
+        transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Time.deltaTime;
     }
 
     private void UpgradeGUIHP()
@@ -60,7 +76,7 @@ public class Player : Creature
 
     private void Move()
     {
-        animation.Play(move.name);
+        playerAnimations.PlayMove();
         transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * speed * Time.deltaTime;
     }
 
@@ -76,11 +92,9 @@ public class Player : Creature
             MouseManager.getPosition();
         }
     }
+    #endregion
 
+    #region PROPERTIES
     public int Points => points;
-
-    public void AddPoints()
-    {
-        points++;
-    }
+    #endregion
 }

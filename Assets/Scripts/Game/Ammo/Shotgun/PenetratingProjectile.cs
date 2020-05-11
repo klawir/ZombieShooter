@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class PenetratingProjectile : Ammo
 {
+    #region OVERRIDES METHODS
     protected override void Start()
     {
         base.Start();
@@ -18,4 +19,5 @@ public class PenetratingProjectile : Ammo
             Destroy(gameObject);
         }
     }
+    #endregion
 }

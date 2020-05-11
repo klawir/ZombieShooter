@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Shotgun : Firearm
 {
-    public Transform additionalShootSource;
+    #region REFERENCES  
+    [SerializeField]
+    private Transform additionalShootSource;
+    #endregion
 
+    #region OVERRIDES METHODS
     protected override void Start()
     {
         base.Start();
@@ -20,4 +24,5 @@ public class Shotgun : Firearm
             time = Time.time;
         }
     }
+    #endregion
 }

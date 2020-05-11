@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Riflegun : Firearm
 {
+    #region OVERRIDES METHODS
     protected override void Start()
     {
         base.Start();
@@ -17,4 +18,5 @@ public class Riflegun : Firearm
             time = Time.time;
         }
     }
+    #endregion
 }

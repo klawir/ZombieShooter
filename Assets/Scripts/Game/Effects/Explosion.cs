@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    public string enemyTag;
-    public int damage;
-    public GameObject effect;
-    public GameObject burnEffect;
+    #region REFERENCES  
+    [SerializeField]
+    private string enemyTag;
 
+    [SerializeField]
+    private int damage;
+
+    [SerializeField]
+    private GameObject effect;
+
+    [SerializeField]
+    private GameObject burnEffect;
+    #endregion
+
+    #region OVERRIDES METHODS
     private void Start()
     {
         Instantiate(effect, transform);
@@ -21,4 +31,5 @@ public class Explosion : MonoBehaviour
             other.GetComponent<Enemy>().getDamage(damage);
         }
     }
+    #endregion
 }
