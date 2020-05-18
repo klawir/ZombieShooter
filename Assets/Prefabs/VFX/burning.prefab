@@ -4631,7 +4631,6 @@ GameObject:
   - component: {fileID: 1785067305015092781}
   - component: {fileID: 1785067305015123853}
   - component: {fileID: 542035835164335568}
-  - component: {fileID: 7421159530243842263}
   m_Layer: 0
   m_Name: burning
   m_TagString: Untagged
@@ -9210,16 +9209,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   frequencyInSecs: 1
---- !u!114 &7421159530243842263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1785067305000582989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8980bf222fcbdc4fbae98fe9727ad19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delaynInSecs: 4
+  SFXTime: 3.5

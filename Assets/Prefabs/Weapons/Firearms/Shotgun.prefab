@@ -216,7 +216,7 @@ MonoBehaviour:
   speedAttack: 1.5
   ammo: {fileID: -8453651548842734304, guid: 9ca3ecbcdb4b8e74097b2aa5e07d2a80, type: 3}
   audioSFX: {fileID: 3091415445904705729}
-  shootEffect: {fileID: 3432637488556507338, guid: 378dea503ac7c9d44b0e58717d90c419,
+  shootEffectPref: {fileID: 3432637488575158698, guid: 378dea503ac7c9d44b0e58717d90c419,
     type: 3}
   additionalShootSource: {fileID: 1818829112015417987}
 --- !u!1 &5233067428004314451

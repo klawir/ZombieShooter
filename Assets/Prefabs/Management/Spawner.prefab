@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4537985644645548590}
   - component: {fileID: 4537985644645548591}
+  - component: {fileID: 5583908852726854041}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -56,8 +57,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4537985644645548584}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -501.45776, y: -360, z: 41.885017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8836929905314655451}
@@ -77,11 +78,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4293285501310333408, guid: 37001e9086065fb4783f958861270eda, type: 3}
-  spawnPoints:
+  impactEffect: {fileID: 6969844487385162598, guid: e19c79f66cd2a4e44872345c426a6963,
+    type: 3}
+  enemySpawnPoints:
   - {fileID: 4537985646420957312}
   - {fileID: 4537985646464329366}
-  spawnTimeFraquency: 0.5
-  parent: {fileID: 0}
+  spawnTimeFraquency: 1
+  respawnTime: 7
+  waitingRoom: {fileID: 0}
+  parentForDynamicsObjects: {fileID: 0}
+  enemyMaxAmount: 40
+  effectMaxAmount: 15
+--- !u!114 &5583908852726854041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4537985644645548584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27dfcf2c8d6fd1489227b986b0cff95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4537985646420957313
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4537985646464329367}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.5999985, y: 0, z: 37.3}
+  m_LocalPosition: {x: 7.5999985, y: 0, z: 43.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8836929905314655451}

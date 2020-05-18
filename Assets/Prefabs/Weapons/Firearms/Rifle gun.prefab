@@ -98,9 +98,9 @@ MonoBehaviour:
   damage: 2
   speedAttack: 0.1
   ammo: {fileID: 3284706834529200797, guid: 4c1d988c14dab87438bfb0c178662ab6, type: 3}
-  audioSFX: {fileID: 1628166367408080670}
-  shootEffect: {fileID: 3432637488556507338, guid: 378dea503ac7c9d44b0e58717d90c419,
+  shootEffectPref: {fileID: 3432637488575158698, guid: 378dea503ac7c9d44b0e58717d90c419,
     type: 3}
+  audioSFX: {fileID: 1628166367408080670}
 --- !u!1 &5676072270309820169
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 2.1370544
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

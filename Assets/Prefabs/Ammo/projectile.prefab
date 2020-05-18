@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8177549483661545326}
   - component: {fileID: -3093993318739541064}
   - component: {fileID: 3284706834529200797}
-  - component: {fileID: 5854450733998633424}
   m_Layer: 0
   m_Name: projectile
   m_TagString: Projectile
@@ -109,7 +108,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.5
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -128,23 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 0}
   enemyTag: Enemy
-  groundTag: Ground
-  implactEffect: {fileID: 6946960200387243245, guid: e19c79f66cd2a4e44872345c426a6963,
-    type: 3}
   speed: 50
---- !u!114 &5854450733998633424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464274261255162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8980bf222fcbdc4fbae98fe9727ad19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delaynInSecs: 3
+  rigidbody: {fileID: -3093993318739541064}
+  trailEffect: {fileID: 4404132381655213219}
 --- !u!1 &6818788170834546044
 GameObject:
   m_ObjectHideFlags: 0

@@ -135,13 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8f84b9b8fcfe54d99987af5eb8a239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  maxHP: 1000
+  speed: 7
+  HP: 1000
   currentHp: 0
-  points: 0
-  keyBindings: {fileID: 11400000, guid: a2f07af7d32a96f4e8d262fdd0e5359f, type: 2}
   playerAnimations: {fileID: 8551093581799580008}
-  HP: {fileID: 0}
 --- !u!114 &5896002883613517556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +154,7 @@ MonoBehaviour:
   rifleGun: {fileID: 7677741909344282993, guid: ded1e959d84219348a21376829878814,
     type: 3}
   shotgun: {fileID: 622519105856769087, guid: 9fedb9481410c6d4bb160cbddec771f5, type: 3}
-  keyBindings: {fileID: 11400000, guid: a2f07af7d32a96f4e8d262fdd0e5359f, type: 2}
+  keyBindings: {fileID: 0}
   currentGun: {fileID: 0}
   grenades: {fileID: 2864640706088831918}
   gunSlot: {fileID: 5896002882692510375}
